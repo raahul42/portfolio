@@ -99,7 +99,8 @@ em {
  
  .img {
    max-width: 100%;
-   max-height:100%; }
+   max-height:100%; 
+   }
   
  .resume{
 background-color: white;
@@ -180,7 +181,7 @@ video {
   /* 2 */
   height: auto;
   /* 3 */
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 /*
  * Deprecated: only needed for `img` elements with `uk-img`
@@ -193,6 +194,7 @@ img:not([src]) {
   /* 2 */
   min-width: 1px;
 }
+
 /*
  * Iframe
  * Remove border in all browsers
@@ -293,6 +295,7 @@ h4,
 .uk-h4 {
   font-size: 1.25rem;
   line-height: 1.4;
+  text-sty
 }
 h5,
 .uk-h5 {

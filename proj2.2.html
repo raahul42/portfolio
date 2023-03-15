@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/uikit.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/uikit.js"></script>
+    <script src="js/uikit-icons.js"></script>
+    <script> 
+    function forceDownload(link){
+    var url = link.getAttribute("data-href");
+    var fileName = link.getAttribute("download");
+    link.innerText = "...";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.onload = function(){
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = fileName;
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+        link.innerText="Download";
+    }
+    xhr.send();
+}
+    </script>
+    <title>Mugundhan Murugesan - Portfolio</title>
+</head>
+<body>
+<!-- Navigation Bar -->
+    <nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-visible@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#projects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><a class="uk-button-text uk-text-capitalize" href="#about" uk-scroll>About</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#projects" uk-scroll>Projects</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#resume" uk-scroll>Resume</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#contact" uk-scroll>Contact</a></li> -->
+            <!-- <li><a class="uk-button-text uk-text-capitalize" href="mailto:mmurugesan3@gatech.edu" uk-scroll>Contact</a></li> -->
+
+        </ul>
+
+    </div>
+</nav>
+<!-- Navigation Bar Ends  -->
+
+<!-- Navigation Bar Mobile -->
+<nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-hidden@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#projects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><button uk-toggle="target: #offcanvas-nav" type="button" uk-navbar-toggle-icon></button></li>
+
+        </ul> -->
+
+    </div>
+</nav>
+
+<!-- Navigation Bar Mobile Ends -->
+
+
+
+<!-- Projects Section -->
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+<section id="projects" class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
+<h3 class="uk-margin-xlarge-left uk-light">Detecting Fake reviews on Amazon</h3>
+
+<div class="uk-margin-xlarge-left uk-margin-xlarge-right">
+    <!-- Change all of this to ur projects -->
+    <div class="uk-margin uk-card uk-card-secondary uk-card-body ">
+        <span class="skills" >Python</span>&nbsp;<span class="skills" >PySpark</span>&nbsp;<span class="skills" >Flask</span>&nbsp;<span class="skills" >NLP</span>&nbsp;<span class="skills" >BERT</span>&nbsp;
+        <p>This project was created as a part of the graduate course CSE 6242 - Data and Visual Analytics (Fall 2021) at Georgia Tech. Authors: Sittun Swayam Prakash, Atrima Ghosh, Parth Iramani, Zoe Masood, Jenna Gottschalk, Mugundhan Murugesan.
+            The aim of our project is to detect fake reviews on Amazon using the review text. Our approach combines semi-supervised learning and transformer models to identify fake Amazon reviews. The end product of our project is a web application which will allow the user to predict whether a review is fake or real.
+        </p><p>
+            The Datasets used in our projects are: <br>
+            
+            Labelled Dataset from Kaggle - <a href = "https://www.kaggle.com/lievgarcia/amazon-reviews" target="_blank" rel="noopener noreferrer">https://www.kaggle.com/lievgarcia/amazon-reviews</a> <br>
+            
+            Unlabelled dataset from Amazon -<a href =  "https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_multilingual_US_v1_00.tsv.gz" target="_blank" rel="noopener noreferrer">https://s3.amazonaws.com/amazon-reviews-pds/tsv/amazon_reviews_multilingual_US_v1_00.tsv.gz</a> <br>
+            <br>
+            Following are the steps involved in creating and evaluation of the Model to predict fake reviews using review text:<br>
+            (1) We split the original labeled dataset into four parts: 70% training set, 10% first validation set to compare initial supervised classification models, 10% second validation set to compare the updated classification models, and 10% test set to evaluate the final classifier’s performance. <br>
+            (2) We trained the initial model on the training set of labeled data.<br>
+            (3) We generated pseudo-labels by using the initial model to classify the unlabeled data set.<br>
+            (4) The most confidently predicted pseudo-labels above a specific threshold became training data for the next step.<br>
+            (5) We updated the initial model using the pseudo-labels as training data.<br>
+            (6) Finally, we tested the final classifier on the test set of the original labeled data.   <br> <br>
+            The poster below explains the motivation and results of this project: <br> <br>
+            <img src="lib/nlp.png"> <br><br>
+            We also created a webpage that users can use to predict if a review on amazon is fake. The screenshot is attached below: <br> <br>
+            <img src="lib/nlp2.png"> <br><br>
+            Feel free to checkout the code in the github repository: <br>
+        </p>
+
+        <a class ="readmore" class="uk-button-text uk-text-decoration-none" href="https://github.com/mugndhn/Detecting-fake-reviews-on-Amazon" target="_blank" rel="noopener noreferrer">
+            <span uk-icon="icon: link">
+            </span> Github Repository </a>
+        </div>
+    <br>
+
+
+</section>
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+</div>
+<!-- Projects Section Ends -->
+
+  
+</body>
+</html>

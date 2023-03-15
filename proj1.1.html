@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/uikit.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/uikit.js"></script>
+    <script src="js/uikit-icons.js"></script>
+    <script> 
+    function forceDownload(link){
+    var url = link.getAttribute("data-href");
+    var fileName = link.getAttribute("download");
+    link.innerText = "...";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.onload = function(){
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = fileName;
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+        link.innerText="Download";
+    }
+    xhr.send();
+}
+    </script>
+    <title>Mugundhan Murugesan - Portfolio</title>
+</head>
+<body>
+<!-- Navigation Bar -->
+    <nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-visible@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#projects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><a class="uk-button-text uk-text-capitalize" href="#about" uk-scroll>About</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#projects" uk-scroll>Projects</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#resume" uk-scroll>Resume</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#contact" uk-scroll>Contact</a></li> -->
+            <!-- <li><a class="uk-button-text uk-text-capitalize" href="mailto:mmurugesan3@gatech.edu" uk-scroll>Contact</a></li> -->
+
+        </ul>
+
+    </div>
+</nav>
+<!-- Navigation Bar Ends  -->
+
+<!-- Navigation Bar Mobile -->
+<nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-hidden@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#projects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><button uk-toggle="target: #offcanvas-nav" type="button" uk-navbar-toggle-icon></button></li>
+
+        </ul> -->
+
+    </div>
+</nav>
+
+<!-- Navigation Bar Mobile Ends -->
+
+
+
+<!-- Projects Section -->
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+<section id="projects" class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
+<h3 class="uk-margin-xlarge-left uk-light">Model to maximize H1-B visa chances</h3>
+
+<div class="uk-margin-xlarge-left uk-margin-xlarge-right">
+    <!-- Change all of this to ur projects -->
+    <div class="uk-margin uk-card uk-card-secondary uk-card-body ">
+        <span class="skills" >Python</span>&nbsp;<span class="skills" >Pandas</span>&nbsp;<span class="skills" >Sklearn</span>&nbsp;<span class="skills" >geopandas</span>&nbsp;<span class="skills" >Classification</span>&nbsp;
+        <p align="justify">  
+            <u><b>Problem Statement:</b></u><br>
+            Lets consider a Law Firm called 'Immigrant Success' and its the period before 2019 when the lottery system did not exist. The firm wants to provide few key insights to their clients on maximizing the chances of H1-B being approved. 
+            
+            To solve this, they want me (a Data Scientist) to use the historical data of H1-B cases and identify key factors. <br>
+            
+            <br> The Datasets used in this project is from kaggle: 
+        <a href = "https://www.kaggle.com/datasets/thedevastator/h-1b-non-immigrant-labour-visa" target="_blank" rel="noopener noreferrer">https://www.kaggle.com/datasets/thedevastator/h-1b-non-immigrant-labour-visa</a><br>
+           
+
+            
+            <br>The following are the columns and what they mean:  <br><br>
+            
+            
+              <b>  case_year:</b> The year in which the case was submitted. (Integer)  <br>
+              <b> case_status:</b> The status of the case, either approved or denied. (String)  <br>
+              <b> case_submitted:</b> The date on which the case was submitted. (Date)  <br>
+              <b> decision_date:</b> The date on which the decision was made. (Date)<br>  
+              <b> emp_name:</b> The name of the employer. (String)  <br>
+              <b> emp_city:</b> The city in which the employer is located. (String)  <br>
+              <b> emp_state:</b> The state in which the employer is located. (String)  <br>
+              <b> emp_zip:</b> The zip code of the employer. (Integer)  <br>
+              <b> emp_country:</b> The country in which the employer is located. (String)  <br>
+              <b> job_title:</b> The title of the job for which the visa is being applied. (String)<br>  
+              <b> soc_code:</b> The Standard Occupational Classification code for the job. (Integer)  <br>
+              <b> soc_name:</b> The name of the Standard Occupational Classification for the job. (String) <br> 
+              <b> full_time_position:</b> Whether the position is full-time or not. (Boolean) <br> 
+              <b> prevailing_wage:</b> The prevailing wage for the job. (Integer)<br>  
+              <b> pw_unit:</b> The unit of the prevailing wage. (String)  <br>
+              <b> pw_level:</b> The level of the prevailing wage. (String)  <br>
+              <b> wage_from:</b> The minimum wage for the job. (Integer)  <br>
+              <b> wage_to:</b> The maximum wage for the job. (Integer)  <br>
+              <b> wage_unit:</b> The unit of the wage. (String)  <br>
+              <b> work_city:</b> The city in which the job is located. (String)  <br>
+              <b> work_state:</b> The state in which the job is located. (String)  <br>
+              <b>  emp_h1b_dependent:</b> Whether the employer is H-1B dependent or not. (Boolean) <br> 
+              <b>  emp_willful_violator:</b> Whether the employer is a willful violator or not. (Boolean)  <br>
+              <b> lat:</b> The latitude of the job location.(Float)  <br>
+              <b> lng:</b> The longitude of the job location. (Float)  <br>        </p><p align="justify">
+            
+            First, I divided the data into training (70%) and testing data (30%) and explored the training data to gain some insights. The reason I analyzed only the training data is to avoid data leakage. Here are few insights:<br>
+            <br><u style="text-underline-offset: 4px;">1. Eventhough the number of applicants increase each year, the percentage of acceptance remains constant.</u><br><br>
+            <div ><img src="img/1.1.2.png" width="425px" height="425px" > &nbsp;<img src="img/1.1.1.png" width="400px" height="400px" > <br><br> </div>
+            <br><u style="text-underline-offset: 4px;">2. California is the highest <b>STATE</b> where employers are applying for H1-B (2011 to 2017 cumulatively) with 3,88,666 total applicants.</u>  [Top 10 states shown below]<br><br>
+            <img src="img/1.1.3.png" width="425px" height="425px"> <br>
+            <br>Below is the visualization on USA map using geopandas to get an overview: <br><br>
+            <img src="img/1.1.3.1.png" > <br>
+            <br><u style="text-underline-offset: 4px;">3. Plano, TX is the highest <b>CITY</b> where employers are applying for H1-B (2011 to 2017 cumulatively) with 1,35,573 total applicants.</u> [Top 10 cities shown below]<br><br>
+            <img src="img/1.1.4.png" width="425px" height="425px"> <br>
+            <p align="justify">Note that here, the top empolyer city does not belong to the top employer state
+            Plano, TX has the most number of employees applying compared to other cities. 
+            But overall, California has the highest number of employess applying. 
+            The reason for this because there are significantly higher number of employee cities in California compared to Texas even though one of its cities (Plano) has significantly higher employers.    <br>    
+            </p><u style="text-underline-offset: 4px;">4. Top 10 number of applicants belonging to each Standard Occupational Classification of the job (2011 to 2017 cumulatively).</u> <br><br>
+            <img src="img/1.1.5.png" width="425px" height="425px"> 
+            <br><p align="justify">Note: The 2018 Standard Occupational Classification (SOC) system is a federal statistical standard used by federal agencies to classify workers into occupational categories for the purpose of collecting, calculating, or disseminating data. All workers are classified into one of 867 detailed occupations according to their occupational definition.</p>
+                <u style="text-underline-offset: 4px;">5. Top 10 Job titles of applicants (2011 to 2017 cumulatively).</u> <br><br>
+                <img src="img/1.1.6.png" width="425px" height="425px"> <br>
+            <br> We can see that most of the top job titles belong the computer science sector. <br>
+            <br><u style="text-underline-offset: 4px;">6. Number of applicants belonging to different levels of the H1-B prevailing wage (2011 to 2017 cumulatively).</u> <br><br>
+            <img src="img/1.1.7.png" width="425px" height="425px"> <br>
+             <p align="justify">  Most of the applicants belong to Level 1 wage level, which is the minimum wage limit for employees with least experience.
+            </p> 
+            
+            After the analysis, I decided to do some feature engineering and build a classification model to predict the results of H1-B cases based on the input features. I am also extracting important key features from this model.
+
+            <br><br><b><u>Feature Engineering:</u></b><br><br>
+
+            1. Dividing the states for 'emp_state' and 'work_state' into 3 categories: west, mid, east based on their position in the USA, as the name suggests:<br>
+
+            <img src="img/1.1.8.png" > <br>
+            <br>
+            2. Now, for the 'soc_name' column: The name of the Standard Occupational Classification for the job, This columns has nearly 1314 unique values and I want to cluster them to 7 categories using <b>regular expressions</b>:
+            <br>
+            &nbsp;&nbsp;computer - Computer related jobs <br>
+            &nbsp;&nbsp;engineering - other engineering fields jobs other than computer <br>
+            &nbsp;&nbsp;medicine - Medicine related jobs <br>
+            &nbsp;&nbsp;law - law related jobs <br>
+            &nbsp;&nbsp;teaching - teaching related jobs <br>
+            &nbsp;&nbsp;research - advanced research related jobs <br>
+            &nbsp;&nbsp;nonstem - all other jobs apart from the above categories <br>
+            <br>
+            Additionally, I standardized the numerical variables using standard scaler and for the 'wage' column: The wage was given in different rates: hourly, weekly, bi-weekly, monthly, yearly. So, I converted them uniformly into hourly rate.
+            
+            <br><br><b><u>Modeling:</u></b><br><br>
+
+            Initially, I ran random forest classifier model with data from all the years and got a very bad model performance.
+            
+            This is a classic case of garbage-in and garbage-out example in Machine Learning. The reason for the bad performance is mostly due to the non-consistent data. By intuition we can also say that policies for H1-B keep changing each year and hence I decided to train the model only on the latest year - 2017. This will also give us insights on H1-B based on the latest policies.
+            
+            <br>
+            <br>
+            I decided to use logistic regression as the baseline model and tree based models like random forest, LightGBM models as comparing models to see if the performance improves.
+            The confusion matrix and model performance for different models are given below:
+            <br><figure><img src="img/1.1.9.png" >
+                <figcaption align="center">Logistic Regression &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LightGBM Classifier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Random Forest Classifier</figcaption>
+            </figure> 
+            The <b>Random Forest Classifier</b> is the best performing model. <br><br>
+
+            <u><b>TOP FEATURES:</b></u><br>
+            
+            As our final model is the random forest classifier, we can use the Gini importance score calculated in decision trees to compute the feature importance. <br>
+            <br><img src="img/1.1.10.png" ><br>
+            <p align="justify">
+            Wages of the applicant seems to be the most important factor followed by location (latitude, longitude) of the job position. 
+            The low importance of other categorical features like soc_name and region can be because of the coarse feature engineering. 
+            Increasing the number of clustered categories for each variable might improve the model. </p>
+            <br>Feel free to checkout the code in the github repository: <br>
+        </p>
+
+        <a class ="readmore" class="uk-button-text uk-text-decoration-none" href="https://github.com/mugndhn/Detecting-fake-reviews-on-Amazon" target="_blank" rel="noopener noreferrer">
+            <span uk-icon="icon: link">
+            </span> Github Repository </a>
+        </div>
+    <br>
+
+
+</section>
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+</div>
+<!-- Projects Section Ends -->
+
+  
+</body>
+</html>

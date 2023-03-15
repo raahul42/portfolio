@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/uikit.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/uikit.js"></script>
+    <script src="js/uikit-icons.js"></script>
+    <script> 
+    function forceDownload(link){
+    var url = link.getAttribute("data-href");
+    var fileName = link.getAttribute("download");
+    link.innerText = "...";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.onload = function(){
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = fileName;
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+        link.innerText="Download";
+    }
+    xhr.send();
+}
+    </script>
+    <title>Mugundhan Murugesan - Portfolio</title>
+</head>
+<body>
+<!-- Navigation Bar -->
+    <nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-visible@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#passionprojects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><a class="uk-button-text uk-text-capitalize" href="#about" uk-scroll>About</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#projects" uk-scroll>Projects</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#resume" uk-scroll>Resume</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#contact" uk-scroll>Contact</a></li> -->
+            <!-- <li><a class="uk-button-text uk-text-capitalize" href="mailto:mmurugesan3@gatech.edu" uk-scroll>Contact</a></li> -->
+
+        </ul>
+
+    </div>
+</nav>
+<!-- Navigation Bar Ends  -->
+
+<!-- Navigation Bar Mobile -->
+<nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-hidden@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#passionprojects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><button uk-toggle="target: #offcanvas-nav" type="button" uk-navbar-toggle-icon></button></li>
+
+        </ul> -->
+
+    </div>
+</nav>
+
+<!-- Navigation Bar Mobile Ends -->
+
+
+
+<!-- Projects Section -->
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+<section id="projects" class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
+<h3 class="uk-margin-xlarge-left uk-light">Medical Cost Predictor</h3>
+
+<div class="uk-margin-xlarge-left uk-margin-xlarge-right">
+    <!-- Change all of this to ur projects -->
+    <div class="uk-margin uk-card uk-card-secondary uk-card-body ">
+        <span class="skills" >Python</span>&nbsp;<span class="skills" >Pandas</span>&nbsp;<span class="skills" >Sklearn</span>&nbsp;<span class="skills" >Flask</span>&nbsp;<span class="skills" >Regression</span>&nbsp;
+        <p align="justify"> This is my first ever project in data science :) <br><br>
+            The aim of the project is to create a model which predicts the medical cost that can be charged by health insurance company based on a person's sex, age, bmi, Number of children/dependants, region of residence, and smoking habits.<br><br>
+
+            The source of the dataset used in this analysis is Kaggle (<a href = "https://www.kaggle.com/mirichoi0218/insurance" target="_blank" rel="noopener noreferrer">https://www.kaggle.com/mirichoi0218/insurance</a>). <br><br>
+            
+            The Exploratory Data Analysis of the dataset and the results/accuracy of the model are provided in <a href = "https://github.com/mugndhn/Medical-cost-predictor/blob/main/medical-cost-EDA.ipynb" target="_blank" rel="noopener noreferrer"><u>this jupyter notebook file</u></a>.<br><br>
+            
+            The outcome of the project was a web application where the data can be entered and a prediction of the medical cost is displayed.        </p><p>
+            
+            
+           <b>The screenshot the web application is attached below: </b><br> <br>
+            Page 1: To enter the input data <br><br>
+            <img src="img/1.3.1.png"> <br><br>
+            Page 2: Displays the predicted cost  <br><br>
+            <img src="img/1.3.2.png"> <br><br>
+            Feel free to checkout the code in the github repository: <br>
+        </p>
+
+        <a class ="readmore" class="uk-button-text uk-text-decoration-none" href="https://github.com/mugndhn/Medical-cost-predictor" target="_blank" rel="noopener noreferrer">
+            <span uk-icon="icon: link">
+            </span> Github Repository </a>
+        </div>
+    <br>
+
+
+</section>
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+</div>
+<!-- Projects Section Ends -->
+
+  
+</body>
+</html>

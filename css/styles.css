@@ -1,4 +1,7 @@
 html{
     font-family: IBM Plex Mono;
 }
+u{
+    text-underline-offset: 4px;
+}
 

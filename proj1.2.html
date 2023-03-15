@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/uikit.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/uikit.js"></script>
+    <script src="js/uikit-icons.js"></script>
+    <script> 
+    function forceDownload(link){
+    var url = link.getAttribute("data-href");
+    var fileName = link.getAttribute("download");
+    link.innerText = "...";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "blob";
+    xhr.onload = function(){
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        var tag = document.createElement('a');
+        tag.href = imageUrl;
+        tag.download = fileName;
+        document.body.appendChild(tag);
+        tag.click();
+        document.body.removeChild(tag);
+        link.innerText="Download";
+    }
+    xhr.send();
+}
+    </script>
+    <title>Mugundhan Murugesan - Portfolio</title>
+</head>
+<body>
+<!-- Navigation Bar -->
+    <nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-visible@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#passionprojects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><a class="uk-button-text uk-text-capitalize" href="#about" uk-scroll>About</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#projects" uk-scroll>Projects</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#resume" uk-scroll>Resume</a></li>
+            <li><a class="uk-button-text uk-text-capitalize" href="#contact" uk-scroll>Contact</a></li> -->
+            <!-- <li><a class="uk-button-text uk-text-capitalize" href="mailto:mmurugesan3@gatech.edu" uk-scroll>Contact</a></li> -->
+
+        </ul>
+
+    </div>
+</nav>
+<!-- Navigation Bar Ends  -->
+
+<!-- Navigation Bar Mobile -->
+<nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-hidden@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    
+    <div class="uk-navbar-left">
+        <a href="index.html#passionprojects" class="uk-navbar-item uk-logo uk-light">Back to projects</a>
+        <a href="index.html" class="uk-navbar-item uk-logo uk-light">Home</a>
+    </div>
+    <div class="uk-navbar-right">
+
+        <!-- <ul class="uk-navbar-nav uk-light">
+            <li><button uk-toggle="target: #offcanvas-nav" type="button" uk-navbar-toggle-icon></button></li>
+
+        </ul> -->
+
+    </div>
+</nav>
+
+<!-- Navigation Bar Mobile Ends -->
+
+
+
+<!-- Projects Section -->
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+<section id="projects" class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
+<h3 class="uk-margin-xlarge-left uk-light">TWEETY - twitter chat bot for moderating hate speech</h3>
+
+<div class="uk-margin-xlarge-left uk-margin-xlarge-right">
+    <!-- Change all of this to ur projects -->
+    <div class="uk-margin uk-card uk-card-secondary uk-card-body ">
+        <span class="skills" >Python</span>&nbsp;<span class="skills" >NLP</span>&nbsp;<span class="skills" >HuggingFace</span>&nbsp;<span class="skills" >web scraping</span>&nbsp;<span class="skills" >selenium</span>&nbsp;
+        <p align="justify">
+            This project was built in collaboration with Harini Narayanan and Michael Murillo-Martinez. 
+        </p> 
+        <p align="justify"><u><b>Inspiration for this project: </b></u><br>
+        Expression is one of the first steps of mental health and well being. A common fear among people posting on social media is that someone will have a strong negative reaction to something you share.These comments have a negative impact on the mood of the user. What if there are negative comments on a user posting about mental health problems. It may push them over the edge.
+        </p>
+        <p align="justify">
+            <u><b>What it does:</b></u> <br>
+            The tool finds tweets about Mental Health and collects replies for each tweet. If the tweet has an overall of negative replies, a chatbox replies to the user tweet with a positive message to help them feel better.
+        </p>
+        <p align="justify">
+            <u><b>How we built it:</b></u> <br>
+We used Python to scrape tweets and replies and used NLP neural network model to predict the negativity of the replies with their confidence values. Then, we used selenium to create a bot that can navigate the tweets with negativity and can reply with a positive message to that tweet.
+        </p>
+        <p align="justify">
+            <u><b>What we learned: </b></u><br>
+We learned that there are some tweets where people express negativity and that needs to be addressed. We learnt a ton of new libraries, packages and tools such as Deepnote and Selenium.
+        </p>
+        <p align="justify">
+            <u><b>What's next for Tweety: </b></u> <br>
+- Generalizing the tool to study the user tweet replies on any topics. <br>- Expanding it to other social media sites.  <br>- Develop a virtual chatbot that can reply positively to the tweets of users with more negativity.
+        </p> 
+        <p align="justify">
+            <u><b>My contributions: </b></u> <br>
+            - I worked on scraping the text of the replies of each tweet, aggregating the data, data cleaning and preprocessing.<br>
+            - I also implemented a sentiment analysis using NLP neural network to predict the negativity scores of the replies of each post.<br><br>
+          <b>  Below is the video explaining the whole project and also a demo of our tool:</b>
+        </p> 
+        <iframe width="854" height="480" src="https://www.youtube.com/embed/Sn86gk3Nthk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>   
+        <a class ="readmore" class="uk-button-text uk-text-decoration-none" href="https://devpost.com/software/tweety-7r682q?ref_content=my-projects-tab&ref_feature=my_projects" target="_blank" rel="noopener noreferrer">
+            <span>
+            </span> More Details </a> <br> <br>
+        <a class ="readmore" class="uk-button-text uk-text-decoration-none" href="https://github.com/mugndhn/tweety-hacklytics2022" target="_blank" rel="noopener noreferrer">
+            <span uk-icon="icon: link">
+            </span> Github Repository </a>
+        </div>
+    <br>
+
+
+</section>
+<hr class="uk-margin-xlarge-left uk-margin-xlarge-right">
+</div>
+<!-- Projects Section Ends -->
+
+  
+</body>
+</html>
