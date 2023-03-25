@@ -1,3 +1,3 @@
-# portfolio
-Project portfolio website - Mugundhan Murugesan
-https://mugndhn.github.io/portfolio/
+# Portfolio
+Project portfolio website - N Raahul
+[https://raahul42.github.io/portfolio/]
